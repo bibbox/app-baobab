@@ -12,16 +12,15 @@ services:
     restart: unless-stopped
     networks:
       - bibbox-default-network
-    depends_on:
-      - $$INSTANCE-bika
-
-  $$INSTANCE-bika:
-    image: bika
-    container_name: $$INSTANCE-bika
-    restart: unless-stopped
-    networks:
-      - bibbox-default-network
     ports:
           - "$$PORT:8080"
-    links:
-      - $$INSTANCE-baobab:baobab
+    volumes_from:
+      - $$INSTANCE-lims-data
+    depends_on:
+      - $$INSTANCE-lims-data
+
+  $$INSTANCE-lims-data:
+    image: busybox
+    container_name: $$INSTANCE-lims-data
+    volumes:
+      - ./var/local/Plone:/var/local/Plone

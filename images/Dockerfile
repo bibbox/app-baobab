@@ -27,21 +27,21 @@ RUN apt-get update && apt-get install -y \
         libxml2-dev \
         libxslt-dev
 
-ADD https://launchpad.net/plone/4.3/4.3.7/+download/Plone-4.3.7-UnifiedInstaller.tgz /opt/bika/
+ADD https://launchpad.net/plone/4.3/4.3.14/+download/Plone-4.3.14-UnifiedInstaller.tgz /opt/baobab/
 
-RUN tar -xvf /opt/bika/Plone-4.3.7-UnifiedInstaller.tgz -C /opt/bika/
+RUN tar -xvf /opt/baobab/Plone-4.3.14-UnifiedInstaller.tgz -C /opt/baobab/
 
-RUN sudo /opt/bika/Plone-4.3.7-UnifiedInstaller/install.sh --target=/usr/local/Plone --password=adminpassword --build-python zeo
+RUN sudo /opt/baobab/Plone-4.3.14-UnifiedInstaller/install.sh --target=/usr/local/Plone --password=secret --build-python zeo
 
-RUN sed -ie '/^    Pillow/{G;s/$/    bika.lims\n    bika.sanbi\n    graphite.theme/;}' /usr/local/Plone/zeocluster/buildout.cfg
+RUN mkdir -p /var/local/Plone
 
-RUN sed -ie '/setpermissions/{G;G;s^$^[sources]\nbika.lims = git https://github.com/hocinebendou/b3a.biobank.git branch=master\nbika.sanbi = git https://github.com/hocinebendou/baobab.lims.git branch=master\ngraphite.theme = git https://github.com/hocinebendou/graphite.theme.git branch=master^;}' /usr/local/Plone/zeocluster/buildout.cfg
+COPY buildout.cfg /usr/local/Plone/zeocluster/buildout.cfg
 
 RUN cd /usr/local/Plone/zeocluster && sudo -u plone_buildout bin/buildout
 
-COPY ./bika_supervisord.conf /etc/supervisor/conf.d/bika.conf
+COPY ./baobab_supervisord.conf /etc/supervisor/conf.d/baobab.conf
 
-RUN rm -rf /opt/bika
+RUN rm -rf /opt/baobab
 
 EXPOSE 8080
 
