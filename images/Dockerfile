@@ -27,13 +27,22 @@ RUN apt-get update && apt-get install -y \
         libxml2-dev \
         libxslt-dev
 
-ADD https://launchpad.net/plone/4.3/4.3.14/+download/Plone-4.3.14-UnifiedInstaller.tgz /opt/baobab/
 
-RUN tar -xvf /opt/baobab/Plone-4.3.14-UnifiedInstaller.tgz -C /opt/baobab/
+RUN mkdir -p /var/local/Plone/zeoserver \
+    && mkdir -p /var/local/Plone/backups \
+    && mkdir -p /var/local/Plone/blobstorage \
+    && mkdir -p /var/local/Plone/filestorage \
+    && mkdir -p /var/local/Plone/client1/import \
+    && mkdir -p /var/local/Plone/client2/import \
+    && mkdir -p /var/local/Plone/client3/import \
+    && mkdir -p /var/local/Plone/client_reserved/import \
+    && mkdir -p /var/local/Plone/blobstoragebackups
 
-RUN sudo /opt/baobab/Plone-4.3.14-UnifiedInstaller/install.sh --target=/usr/local/Plone --password=secret --build-python zeo
+ADD https://launchpad.net/plone/4.3/4.3.12/+download/Plone-4.3.12-UnifiedInstaller.tgz /opt/baobab/
 
-RUN mkdir -p /var/local/Plone
+RUN tar -xvf /opt/baobab/Plone-4.3.12-UnifiedInstaller.tgz -C /opt/baobab/
+
+RUN sudo /opt/baobab/Plone-4.3.12-UnifiedInstaller/install.sh --target=/usr/local/Plone --password=secret --build-python zeo
 
 COPY buildout.cfg /usr/local/Plone/zeocluster/buildout.cfg
 
