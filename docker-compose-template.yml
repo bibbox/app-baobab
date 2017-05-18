@@ -1,26 +1,27 @@
 version: '2'
 
 networks:
-  bibbox-default-network:
-    external: true
+    bibbox-default-network:
+      external: true
 
 services:
 
-  $$INSTANCE-baobab:
+  §§INSTANCE-baobab:
     image: bibbox/baobab
-    container_name: $$INSTANCE-baobab
+    container_name:  §§INSTANCE-baobab
     restart: unless-stopped
     networks:
       - bibbox-default-network
     ports:
-          - "$$PORT:8080"
-    volumes_from:
-      - $$INSTANCE-lims-data
+      - "§§PORT:8080"
     depends_on:
-      - $$INSTANCE-lims-data
+      - §§INSTANCE-baobab-data
+    volumes_from:
+      - §§INSTANCE-baobab-data
 
-  $$INSTANCE-lims-data:
+  §§INSTANCE-baobab-data:
     image: busybox
-    container_name: $$INSTANCE-lims-data
+    container_name: §§INSTANCE-baobab-data
     volumes:
-      - ./var/local/Plone:/var/local/Plone
+      - ./mounted/data/filestorage:/data/filestorage
+      - ./mounted/data/blobstorage:/data/blobstorage

@@ -1,8 +1,8 @@
 {
-  "name": "Baobab LIMS v0.9",
+  "name": "Baobab LIMS",
   "short_name": "Baobab",
-  "version": "v0.9",
-  "description": "Baobab LIMS is an open source Laboratory Management System tracking the information flow inside a biobank."
+  "version": "v1.0",
+  "description": "Baobab LIMS is an open source Laboratory Management System tracking the information flow inside a biobank.",
   "short_description": "Laboratory management system",
   "catalog_url": "http://bibbox.org/software-shortlist/-/asset_publisher/NpKk4COV3bZZ/content/bika-health?_101_INSTANCE_NpKk4COV3bZZ_redirect=%2Fsoftware-shortlist%2F-%2Fasset_publisher%2FNpKk4COV3bZZ%2Fcontent",
   "application_url": "https://github.com/hocinebendou/baobab.lims",

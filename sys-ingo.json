@@ -1,4 +1,0 @@
-{
-  runningcontainers:["$$INSTANCE-baobab"],
-  supportcontainers:["$$INSTANCE-lims-data"]
-}
