@@ -2,13 +2,16 @@
 
 ## Hints
 * approx. time with medium fast internet connection: **5 minutes**
-* initial user/passwordd: **admin / admin**
+* initial user/password: **admin / admin**
 
 
 ## Docker Images Used
 
- 
-## Install Environment Variables
+- bibbox/baobab
+- busybox:latest
+
 
 ## Mounted Volumes
 
+- /data/filestorage
+- /data/blobstorage
