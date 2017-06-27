@@ -80,7 +80,7 @@ COPY sources.cfg /plone/instance/sources.cfg
 #  && sed -i 's/eggs =/eggs =\n    plone.jsonapi.core/g' buildout.cfg \
 #  && sed -i 's/eggs =/eggs =\n    bika.lims/g' buildout.cfg \
 #  && echo '\n[zeoserver]\nrecipe = plone.recipe.zeoserver\nfile-storage = /data/filestorage/Data.fs\nblob-storage = /data/blobstorage' >> buildout.cfg \
-RUN sudo -u plone bin/buildout
+RUN sudo -u plone bin/buildout -n
 RUN chown -R plone:plone /plone /data
 RUN rm -rf /Plone*
 RUN rm -rf /var/lib/apt/lists/*
