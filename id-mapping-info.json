@@ -1,0 +1,26 @@
+{
+    "documentation": ["https://github.com/BaobabLims/baobab.lims/wiki"],
+    "mappings": {
+        "SAMPLE": {
+            "human_readable": [
+                "(",
+                "function() {",
+                    "var appID = '&&aid';",
+                    "var result = 'http://' + appID + '/Plone/@@API/read?portal_type=Sample&id=' + localId1;",
+                    "return result;",
+                "}",
+                ")()"
+            ],
+            "get_info": [
+                "(",
+                "function() {",
+                    "var appID = '&&aid';",
+                    "var localId1 = '&&id1';",
+                    "var result = 'http://' + appID + '/Plone/@@API/read?portal_type=Sample&id=' + localId1;",
+                    "return result;",
+                "}",
+                ")()"
+            ]
+        }
+    }
+}
