@@ -3,7 +3,7 @@
     {
       "id": "§§PORT",
       "url": "§§INSTANCE",
-      "protocol": "HTTP",
+      "protocol": "HTTPS_BAOBAB",
       "proxy" : "PRIMARY"
     }
   ]
